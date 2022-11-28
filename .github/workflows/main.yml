@@ -1,0 +1,14 @@
+name: Build
+
+on: [push, pull_request]
+
+jobs:
+  unittest:
+    runs-on: ubuntu-latest
+    container:
+      image: ghcr.io/noslate-project/ubuntu:focal-noslate
+    steps:
+      - name: Checkout repo
+        run: repo init -u https://github.com/noslate-project/manifest.git && repo sync
+      - name: Build
+        run: make
